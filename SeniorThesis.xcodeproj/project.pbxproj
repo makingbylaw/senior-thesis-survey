@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22AB5B72233B43B7B097DA04 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 286CE3F83FED4ACC9783B6B1 /* libPods.a */; };
 		DA4E83AB190624F50093EBDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4E83AA190624F50093EBDB /* Foundation.framework */; };
 		DA4E83AD190624F50093EBDB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4E83AC190624F50093EBDB /* CoreGraphics.framework */; };
 		DA4E83AF190624F50093EBDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4E83AE190624F50093EBDB /* UIKit.framework */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		286CE3F83FED4ACC9783B6B1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4E83A7190624F50093EBDB /* SeniorThesis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeniorThesis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4E83AA190624F50093EBDB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DA4E83AC190624F50093EBDB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -56,6 +58,7 @@
 		DA4E83D4190624F50093EBDB /* SeniorThesisTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SeniorThesisTests-Info.plist"; sourceTree = "<group>"; };
 		DA4E83D6190624F50093EBDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DA4E83D8190624F50093EBDB /* SeniorThesisTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SeniorThesisTests.m; sourceTree = "<group>"; };
+		F4FD928EB19C4217B0EB9278 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +69,7 @@
 				DA4E83AD190624F50093EBDB /* CoreGraphics.framework in Frameworks */,
 				DA4E83AF190624F50093EBDB /* UIKit.framework in Frameworks */,
 				DA4E83AB190624F50093EBDB /* Foundation.framework in Frameworks */,
+				22AB5B72233B43B7B097DA04 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +93,7 @@
 				DA4E83D2190624F50093EBDB /* SeniorThesisTests */,
 				DA4E83A9190624F50093EBDB /* Frameworks */,
 				DA4E83A8190624F50093EBDB /* Products */,
+				F4FD928EB19C4217B0EB9278 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +113,7 @@
 				DA4E83AC190624F50093EBDB /* CoreGraphics.framework */,
 				DA4E83AE190624F50093EBDB /* UIKit.framework */,
 				DA4E83CC190624F50093EBDB /* XCTest.framework */,
+				286CE3F83FED4ACC9783B6B1 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -164,9 +170,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA4E83DC190624F50093EBDB /* Build configuration list for PBXNativeTarget "SeniorThesis" */;
 			buildPhases = (
+				C839B6EF69DC47B9859257C4 /* Check Pods Manifest.lock */,
 				DA4E83A3190624F50093EBDB /* Sources */,
 				DA4E83A4190624F50093EBDB /* Frameworks */,
 				DA4E83A5190624F50093EBDB /* Resources */,
+				A06167FC01764EBDBDD5B4BC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -249,6 +257,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A06167FC01764EBDBDD5B4BC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C839B6EF69DC47B9859257C4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DA4E83A3190624F50093EBDB /* Sources */ = {
@@ -382,11 +423,13 @@
 		};
 		DA4E83DD190624F50093EBDB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4FD928EB19C4217B0EB9278 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SeniorThesis/SeniorThesis-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "SeniorThesis/SeniorThesis-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -395,6 +438,7 @@
 		};
 		DA4E83DE190624F50093EBDB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4FD928EB19C4217B0EB9278 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -465,6 +509,7 @@
 				DA4E83DE190624F50093EBDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DA4E83DF190624F50093EBDB /* Build configuration list for PBXNativeTarget "SeniorThesisTests" */ = {
 			isa = XCConfigurationList;
@@ -473,6 +518,7 @@
 				DA4E83E1190624F50093EBDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
