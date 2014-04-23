@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		22AB5B72233B43B7B097DA04 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 286CE3F83FED4ACC9783B6B1 /* libPods.a */; };
+		DA0471ED1907615700E6B84E /* FCColorPickerViewController+FCColorPickerViewController_State.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0471EC1907615700E6B84E /* FCColorPickerViewController+FCColorPickerViewController_State.m */; };
+		DA0471F01907625000E6B84E /* UIButton+UIButton_State.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0471EF1907625000E6B84E /* UIButton+UIButton_State.m */; };
 		DA4E83AB190624F50093EBDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4E83AA190624F50093EBDB /* Foundation.framework */; };
 		DA4E83AD190624F50093EBDB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4E83AC190624F50093EBDB /* CoreGraphics.framework */; };
 		DA4E83AF190624F50093EBDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4E83AE190624F50093EBDB /* UIKit.framework */; };
@@ -37,6 +39,10 @@
 
 /* Begin PBXFileReference section */
 		286CE3F83FED4ACC9783B6B1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA0471EB1907615700E6B84E /* FCColorPickerViewController+FCColorPickerViewController_State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FCColorPickerViewController+FCColorPickerViewController_State.h"; sourceTree = "<group>"; };
+		DA0471EC1907615700E6B84E /* FCColorPickerViewController+FCColorPickerViewController_State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FCColorPickerViewController+FCColorPickerViewController_State.m"; sourceTree = "<group>"; };
+		DA0471EE1907625000E6B84E /* UIButton+UIButton_State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+UIButton_State.h"; sourceTree = "<group>"; };
+		DA0471EF1907625000E6B84E /* UIButton+UIButton_State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+UIButton_State.m"; sourceTree = "<group>"; };
 		DA4E83A7190624F50093EBDB /* SeniorThesis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeniorThesis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4E83AA190624F50093EBDB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DA4E83AC190624F50093EBDB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -130,6 +136,10 @@
 				DA4E83C3190624F50093EBDB /* PMSecondViewController.m */,
 				DA4E83C5190624F50093EBDB /* Images.xcassets */,
 				DA4E83B1190624F50093EBDB /* Supporting Files */,
+				DA0471EB1907615700E6B84E /* FCColorPickerViewController+FCColorPickerViewController_State.h */,
+				DA0471EC1907615700E6B84E /* FCColorPickerViewController+FCColorPickerViewController_State.m */,
+				DA0471EE1907625000E6B84E /* UIButton+UIButton_State.h */,
+				DA0471EF1907625000E6B84E /* UIButton+UIButton_State.m */,
 			);
 			path = SeniorThesis;
 			sourceTree = "<group>";
@@ -297,9 +307,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA4E83B7190624F50093EBDB /* main.m in Sources */,
+				DA0471ED1907615700E6B84E /* FCColorPickerViewController+FCColorPickerViewController_State.m in Sources */,
 				DA4E83BB190624F50093EBDB /* PMAppDelegate.m in Sources */,
 				DA4E83C1190624F50093EBDB /* PMFirstViewController.m in Sources */,
 				DA4E83C4190624F50093EBDB /* PMSecondViewController.m in Sources */,
+				DA0471F01907625000E6B84E /* UIButton+UIButton_State.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

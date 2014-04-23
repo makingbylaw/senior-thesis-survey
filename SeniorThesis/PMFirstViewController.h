@@ -6,23 +6,15 @@
 //  Copyright (c) 2014 Paul Mason. All rights reserved.
 //
 
-/*
- Static colors
- Submit when ready - enter name
- Show results - start again
- 
- - Get rid of tabs
- 
- */
-
 #import <UIKit/UIKit.h>
 #import <FCColorPickerViewController.h>
 
 @interface PMFirstViewController : UIViewController<FCColorPickerViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic,strong) UIColor *cellColor;
-@property (nonatomic,strong) IBOutlet UITableView *colorScale1;
+@property (nonatomic,strong) IBOutlet UITableView *colorScaleTerrorism;
+@property (nonatomic,strong) IBOutlet UITableView *colorScaleTrading;
+@property (nonatomic,strong) IBOutlet UITableView *colorScaleBacteria;
 
--(IBAction)chooseColor:(id)sender;
+- (IBAction) startOver:(id)sender;
 
 @end
