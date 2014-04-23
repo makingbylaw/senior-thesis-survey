@@ -57,6 +57,60 @@
     [self.colorScaleTrading reloadData];
 }
 
+-(NSString *)hexValuesFromUIColor:(UIColor *)color {
+    
+    if (!color) {
+        return nil;
+    }
+    
+    if (color == [UIColor whiteColor]) {
+        // Special case, as white doesn't fall into the RGB color space
+        return @"ffffff";
+    }
+    
+    CGFloat red;
+    CGFloat blue;
+    CGFloat green;
+    CGFloat alpha;
+    
+    [color getRed:&red green:&green blue:&blue alpha:&alpha];
+    
+    int redDec = (int)(red * 255);
+    int greenDec = (int)(green * 255);
+    int blueDec = (int)(blue * 255);
+    
+    NSString *returnString = [NSString stringWithFormat:@"%02x%02x%02x", (unsigned int)redDec, (unsigned int)greenDec, (unsigned int)blueDec];
+    
+    return returnString;
+    
+}
+
+- (IBAction) saveRecord:(id)sender
+{
+    NSMutableString *post = [NSMutableString stringWithFormat:@"PersonName=Paul"];
+    for (int i = 0; i < self.data.count; i++) {
+        NSMutableArray *array = self.data[i];
+        NSInteger count = [array count];
+        for (int j = 0; j < count; j++) {
+            UIColor *c = (UIColor*)[array objectAtIndex:j];
+            [post appendFormat:@"&T%d%d=#%@", i, j, [self hexValuesFromUIColor:c]];
+        }
+    }
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://script.google.com/a/macros/form1.co.nz/s/AKfycbzzpVL4j_rpnk7zqV6qKSwdcJstF9lJ_oUunElRYQaTgWckIG0/exec"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSData *requestData = [NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil];
+    NSString *result = [[NSString alloc] initWithData: requestData encoding: NSUTF8StringEncoding];
+    NSLog(@"Data response: %@", result);
+}
+
 - (NSArray*) loadMetaData:(UITableView*)tableView
 {
     return self.metaData[tableView.tag - TABLE_TAG];
