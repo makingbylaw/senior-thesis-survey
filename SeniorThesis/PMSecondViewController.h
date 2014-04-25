@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PMSecondViewController : UIViewController
+@interface PMSecondViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (nonatomic,strong) IBOutlet UICollectionView *collectionView;
 
 @end
