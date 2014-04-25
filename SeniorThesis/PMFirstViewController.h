@@ -15,6 +15,8 @@
 @property (nonatomic,strong) IBOutlet UITableView *colorScaleTrading;
 @property (nonatomic,strong) IBOutlet UITableView *colorScaleBacteria;
 
+@property (nonatomic,strong) IBOutlet UITextField *textName;
+
 - (IBAction) startOver:(id)sender;
 
 @end

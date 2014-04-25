@@ -55,6 +55,7 @@
     [self.colorScaleTerrorism reloadData];
     [self.colorScaleBacteria reloadData];
     [self.colorScaleTrading reloadData];
+    [self.textName setText:@""];
 }
 
 -(NSString *)hexValuesFromUIColor:(UIColor *)color {
@@ -87,6 +88,8 @@
 
 - (IBAction) saveRecord:(id)sender
 {
+    NSString *name = [self.textName text];
+    
     // Take a screen shot first
     UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
     CGRect rect = [keyWindow bounds];
@@ -95,10 +98,11 @@
     [keyWindow.layer renderInContext:context];
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    // TODO Generate a name..
     [UIImageJPEGRepresentation(img, 1.0) writeToFile:@"paul.jpg" atomically:NO];
     
     // Post it to Google Apps
-    NSMutableString *post = [NSMutableString stringWithFormat:@"PersonName=Paul"];
+    NSMutableString *post = [NSMutableString stringWithFormat:@"PersonName=%@", name];
     for (int i = 0; i < self.data.count; i++) {
         NSMutableArray *array = self.data[i];
         NSInteger count = [array count];
@@ -120,6 +124,19 @@
     NSData *requestData = [NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil];
     NSString *result = [[NSString alloc] initWithData: requestData encoding: NSUTF8StringEncoding];
     NSLog(@"Data response: %@", result);
+    
+    // If it is OK then clear the page
+    if ([result isEqualToString:@"OK"]) {
+        [self startOver:sender];
+        
+        // Say thanks
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"We got it!"
+                                                        message:[NSString stringWithFormat:@"Great, thanks for that %@.", name]
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 - (NSArray*) loadMetaData:(UITableView*)tableView
