@@ -87,6 +87,17 @@
 
 - (IBAction) saveRecord:(id)sender
 {
+    // Take a screen shot first
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    CGRect rect = [keyWindow bounds];
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [keyWindow.layer renderInContext:context];
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [UIImageJPEGRepresentation(img, 1.0) writeToFile:@"paul.jpg" atomically:NO];
+    
+    // Post it to Google Apps
     NSMutableString *post = [NSMutableString stringWithFormat:@"PersonName=Paul"];
     for (int i = 0; i < self.data.count; i++) {
         NSMutableArray *array = self.data[i];
@@ -144,7 +155,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger length = [[self loadMetaData:tableView] count];
-    NSLog(@"Table %d = %d", tableView.tag, length);
     return length;
 }
 
