@@ -7,9 +7,13 @@
 //
 
 #import "PMSecondViewController.h"
+#import "PMCollectionViewCell.h"
 
 @interface PMSecondViewController ()
-
+{
+    NSString *docsDir;
+    NSArray *directoryContent;
+}
 @end
 
 @implementation PMSecondViewController
@@ -18,7 +22,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"ImageColors"];
+    [self.collectionView registerClass:[PMCollectionViewCell class] forCellWithReuseIdentifier:@"ImageColors"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    docsDir = [dirPaths objectAtIndex:0];
+    directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:docsDir error:NULL];
+    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -29,23 +42,23 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 1;
+    return [directoryContent count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageColors" forIndexPath:indexPath];
+    PMCollectionViewCell *cell = (PMCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"ImageColors" forIndexPath:indexPath];
 
     // Set the image
-    cell.backgroundColor = [UIColor greenColor];
-    //UIImageView *cellImage= (UIImageView*)[cell viewWithTag:85];
-    //cellImage.image = [UIImage imageNamed:@"paul.jpg"];
+    NSString *path = [docsDir stringByAppendingPathComponent:[directoryContent objectAtIndex:indexPath.row]];
+    NSLog(@"Path: %@", path);
+    [cell setImage:[UIImage imageWithContentsOfFile:path]];
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(50, 50);
+    return CGSizeMake(250, 250);
 }
 
 @end

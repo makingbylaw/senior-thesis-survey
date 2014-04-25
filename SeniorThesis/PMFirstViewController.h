@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <FCColorPickerViewController.h>
 
-@interface PMFirstViewController : UIViewController<FCColorPickerViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface PMFirstViewController : UIViewController<FCColorPickerViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic,strong) IBOutlet UITableView *colorScaleTerrorism;
 @property (nonatomic,strong) IBOutlet UITableView *colorScaleTrading;

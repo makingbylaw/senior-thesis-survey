@@ -99,7 +99,13 @@
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     // TODO Generate a name..
-    [UIImageJPEGRepresentation(img, 1.0) writeToFile:@"paul.jpg" atomically:NO];
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsDir = [dirPaths objectAtIndex:0];
+    NSDate *date = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYYMMddHHmmss"];
+    NSString *path = [docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", [formatter stringFromDate:date]]];
+    [UIImagePNGRepresentation(img) writeToFile:path atomically:NO];
     
     // Post it to Google Apps
     NSMutableString *post = [NSMutableString stringWithFormat:@"PersonName=%@", name];
@@ -142,6 +148,13 @@
 - (NSArray*) loadMetaData:(UITableView*)tableView
 {
     return self.metaData[tableView.tag - TABLE_TAG];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    [self saveRecord:textField];
+    return YES;
 }
 
 #pragma mark - FCColorPickerViewControllerDelegate Methods

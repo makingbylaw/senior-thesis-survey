@@ -25,6 +25,7 @@
 		DA4E83CF190624F50093EBDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA4E83AE190624F50093EBDB /* UIKit.framework */; };
 		DA4E83D7190624F50093EBDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA4E83D5190624F50093EBDB /* InfoPlist.strings */; };
 		DA4E83D9190624F50093EBDB /* SeniorThesisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4E83D8190624F50093EBDB /* SeniorThesisTests.m */; };
+		DAEAB0D3190A26C800E69EB6 /* PMCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEAB0D2190A26C800E69EB6 /* PMCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		DA4E83D4190624F50093EBDB /* SeniorThesisTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SeniorThesisTests-Info.plist"; sourceTree = "<group>"; };
 		DA4E83D6190624F50093EBDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DA4E83D8190624F50093EBDB /* SeniorThesisTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SeniorThesisTests.m; sourceTree = "<group>"; };
+		DAEAB0D1190A26C800E69EB6 /* PMCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMCollectionViewCell.h; sourceTree = "<group>"; };
+		DAEAB0D2190A26C800E69EB6 /* PMCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMCollectionViewCell.m; sourceTree = "<group>"; };
 		F4FD928EB19C4217B0EB9278 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +143,8 @@
 				DA0471EC1907615700E6B84E /* FCColorPickerViewController+FCColorPickerViewController_State.m */,
 				DA0471EE1907625000E6B84E /* UIButton+UIButton_State.h */,
 				DA0471EF1907625000E6B84E /* UIButton+UIButton_State.m */,
+				DAEAB0D1190A26C800E69EB6 /* PMCollectionViewCell.h */,
+				DAEAB0D2190A26C800E69EB6 /* PMCollectionViewCell.m */,
 			);
 			path = SeniorThesis;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 				DA0471ED1907615700E6B84E /* FCColorPickerViewController+FCColorPickerViewController_State.m in Sources */,
 				DA4E83BB190624F50093EBDB /* PMAppDelegate.m in Sources */,
 				DA4E83C1190624F50093EBDB /* PMFirstViewController.m in Sources */,
+				DAEAB0D3190A26C800E69EB6 /* PMCollectionViewCell.m in Sources */,
 				DA4E83C4190624F50093EBDB /* PMSecondViewController.m in Sources */,
 				DA0471F01907625000E6B84E /* UIButton+UIButton_State.m in Sources */,
 			);
