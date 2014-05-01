@@ -119,7 +119,7 @@
     }
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     
-    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://script.google.com/a/macros/form1.co.nz/s/AKfycbzzpVL4j_rpnk7zqV6qKSwdcJstF9lJ_oUunElRYQaTgWckIG0/exec"]];
     [request setHTTPMethod:@"POST"];
@@ -218,8 +218,8 @@
     UIButton *cellButton = (UIButton*)[cell viewWithTag:85];
     NSInteger table = tableView.tag - TABLE_TAG;
     NSInteger row = indexPath.row;
-    cellButton.row = [NSNumber numberWithInt:row];
-    cellButton.table = [NSNumber numberWithInt:table];
+    cellButton.row = [NSNumber numberWithInteger:row];
+    cellButton.table = [NSNumber numberWithInteger:table];
 
     // Set the color
     cellButton.backgroundColor = self.data[table][row];
