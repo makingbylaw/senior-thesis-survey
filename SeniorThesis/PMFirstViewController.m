@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) NSArray *metaData;
 @property (nonatomic, strong) NSArray *data;
+@property (nonatomic, strong) UIView *overlay;
 
 @end
 
@@ -34,6 +35,11 @@
                    [NSMutableArray arrayWithArray:@[ w, w, w, w, w, w, w, w, w ]],
                    [NSMutableArray arrayWithArray:@[ w, w, w, w, w, w ]]
                  ];
+    self.overlay = [[UIView alloc] initWithFrame:self.view.frame];
+    self.overlay.backgroundColor = [UIColor blackColor];
+    self.overlay.alpha = 0;
+    self.overlay.tag = 9999;
+    [self.view addSubview:self.overlay];
     [super viewDidLoad];
 }
 
@@ -161,8 +167,40 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
-    [self saveRecord:textField];
+    //[self saveRecord:textField];
     return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField;
+{
+    [self animateTextView:textField up:YES];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self animateTextView:textField up:NO];
+}
+
+- (void) animateTextView:(UITextField*)textField up:(BOOL) up
+{
+    // Also overlay a UIView on up, and remove on down
+    if (up) {
+        self.overlay.frame = self.view.frame;
+        self.overlay.alpha = 0.6;
+        textField.layer.zPosition = 5;
+    } else {
+        self.overlay.alpha = 0;
+    }
+    const int movementDistance = 270; // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    int movement= movement = (up ? -movementDistance : movementDistance);
+    NSLog(@"%d",movement);
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    textField.frame = CGRectOffset(textField.frame, 0, movement);
+    [UIView commitAnimations];
 }
 
 #pragma mark - FCColorPickerViewControllerDelegate Methods
