@@ -106,6 +106,7 @@
     [formatter setDateFormat:@"YYYYMMddHHmmss"];
     NSString *path = [docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", [formatter stringFromDate:date]]];
     [UIImagePNGRepresentation(img) writeToFile:path atomically:NO];
+    UIImageWriteToSavedPhotosAlbum(img, nil, nil, nil);
     
     // Post it to Google Apps
     NSMutableString *post = [NSMutableString stringWithFormat:@"PersonName=%@", name];
@@ -127,22 +128,29 @@
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
     
-    NSData *requestData = [NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil];
-    NSString *result = [[NSString alloc] initWithData: requestData encoding: NSUTF8StringEncoding];
-    NSLog(@"Data response: %@", result);
+    // Create a queue and send
+    NSOperationQueue *queue = [NSOperationQueue mainQueue];
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+    {
+        NSString *result = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
+        NSLog(@"Data response: %@", result);
+    }];
+    //NSData *requestData = [NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil];
+    //NSString *result = [[NSString alloc] initWithData: requestData encoding: NSUTF8StringEncoding];
+    //NSLog(@"Data response: %@", result);
     
     // If it is OK then clear the page
-    if ([result isEqualToString:@"OK"]) {
-        [self startOver:sender];
-        
-        // Say thanks
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"We got it!"
-                                                        message:[NSString stringWithFormat:@"Great, thanks for that %@.", name]
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-    }
+    //if ([result isEqualToString:@"OK"]) {
+    [self startOver:sender];
+    
+    // Say thanks
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"We got it!"
+                                                    message:[NSString stringWithFormat:@"Great, thanks for that %@.", name]
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    //}
 }
 
 - (NSArray*) loadMetaData:(UITableView*)tableView
