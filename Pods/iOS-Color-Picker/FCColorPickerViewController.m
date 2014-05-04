@@ -61,6 +61,7 @@
     self.brightnessBar.layer.cornerRadius = 9;
     self.brightnessBar.layer.borderColor = edgeColor.CGColor;
     self.brightnessBar.layer.borderWidth = 2;
+    _swatch.colorSelector = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -242,6 +243,10 @@
 
 - (IBAction)cancelColorSelection {
     [_delegate colorPickerViewControllerDidCancel:self];
+}
+
+- (void) selectColor {
+    [_delegate colorPickerViewController:self didSelectColor:self.color];
 }
 
 @end

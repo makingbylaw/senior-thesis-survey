@@ -35,4 +35,9 @@
     }
 }
 
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.colorSelector selectColor];
+}
+
 @end

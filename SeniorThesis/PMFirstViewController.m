@@ -11,6 +11,7 @@
 #import "FCColorPickerViewController+FCColorPickerViewController_State.h"
 
 #define TABLE_TAG 1000
+#define ARROW_TAG 874
 
 @interface PMFirstViewController ()
 
@@ -41,6 +42,25 @@
     self.overlay.tag = 9999;
     [self.view addSubview:self.overlay];
     [super viewDidLoad];
+    
+    // Add an animation onto the image view
+    CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
+    animationGroup.duration = 5;
+    animationGroup.repeatCount = INFINITY;
+    
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    animation.duration = 0.5f;
+    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    animation.autoreverses = YES;
+    animation.fromValue = [NSNumber numberWithFloat:1.0f];
+    animation.toValue = [NSNumber numberWithFloat:0.8f];
+    [animation setRemovedOnCompletion:NO];
+    [animation setRepeatCount:2];
+    [animation setFillMode:kCAFillModeForwards];
+    animationGroup.animations = @[animation];
+    
+    UIView *arrow = [self.view viewWithTag:ARROW_TAG];
+    [arrow.layer addAnimation:animationGroup forKey:@"scale"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,6 +82,8 @@
     [self.colorScaleBacteria reloadData];
     [self.colorScaleTrading reloadData];
     [self.textName setText:@""];
+    UIView *arrow = [self.view viewWithTag:ARROW_TAG];
+    [arrow setAlpha:1.0f];
 }
 
 -(NSString *)hexValuesFromUIColor:(UIColor *)color {
@@ -219,6 +241,10 @@
     // Reload the table
     UITableView *tableView = (UITableView*)[self.view viewWithTag:table + TABLE_TAG];
     [tableView reloadData];
+    
+    // Hide the arrow
+    UIView *arrow = [self.view viewWithTag:ARROW_TAG];
+    [arrow setAlpha:0.0f];
 }
 
 -(void)colorPickerViewControllerDidCancel:(FCColorPickerViewController *)colorPicker
@@ -243,7 +269,7 @@
         cell.backgroundColor = [UIColor clearColor];
         
         // Create a button to the left
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 88, 44)];
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 88, 42)];
         [button addTarget:self action:@selector(chooseColor:) forControlEvents:UIControlEventTouchUpInside];
         button.tag = 85;
         [cell.contentView addSubview:button];

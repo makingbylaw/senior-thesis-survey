@@ -8,6 +8,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FCSelectColor.h"
 
 /**
  `FCColorPickerViewController` is a view controller that displays a color picker to the user.
@@ -45,7 +46,7 @@
 
 @end
 
-@interface FCColorPickerViewController : UIViewController
+@interface FCColorPickerViewController : UIViewController<FCSelectColor>
 
 /// @name Initializing a Color Picker object
 

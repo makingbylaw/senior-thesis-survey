@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FCSelectColor.h"
 
 @interface FCColorSwatchView : UIView
 
 @property (readwrite, copy, nonatomic) UIColor *color;
+@property (nonatomic) id<FCSelectColor> colorSelector;
 
 @end
