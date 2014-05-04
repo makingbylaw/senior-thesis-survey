@@ -62,6 +62,10 @@
     self.brightnessBar.layer.borderColor = edgeColor.CGColor;
     self.brightnessBar.layer.borderWidth = 2;
     _swatch.colorSelector = self;
+    
+    self.cancelButton.layer.cornerRadius = 5;
+    self.cancelButton.layer.borderWidth = 1;
+    self.cancelButton.layer.borderColor = [self.cancelButton tintColor].CGColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

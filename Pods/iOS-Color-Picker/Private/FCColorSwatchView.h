@@ -12,6 +12,6 @@
 @interface FCColorSwatchView : UIView
 
 @property (readwrite, copy, nonatomic) UIColor *color;
-@property (nonatomic) id<FCSelectColor> colorSelector;
+@property (nonatomic, assign) id<FCSelectColor> colorSelector;
 
 @end

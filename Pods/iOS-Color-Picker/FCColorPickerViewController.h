@@ -103,5 +103,7 @@
  */
 @property (nonatomic, copy) UIColor *tintColor;
 
+@property (nonatomic, strong) IBOutlet UIButton *cancelButton;
+
 @end
 
